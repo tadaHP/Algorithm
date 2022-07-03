@@ -1,25 +1,25 @@
 package Programmers.Programmers_42839;
 
 public class Combination {
-    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
-        if (depth == r) {
-            print(output, r);
+    static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
+        if (r == 0) {
+            print(arr, visited, n);
             return;
         }
-     
-        for (int i=0; i<n; i++) {
-            if (visited[i] != true) {
-                visited[i] = true;
-                output[depth] = arr[i];
-                perm(arr, output, visited, depth + 1, n, r);
-                visited[i] = false;;
-            }
+
+        for (int i = start; i < n; i++) {
+            visited[i] = true;
+            combination(arr, visited, i + 1, n, r - 1);
+            visited[i] = false;
         }
     }
 
-    static void print(int[] arr, int r) {
-        for (int i = 0; i < r; i++)
-            System.out.print(arr[i] + " ");
+    static void print(int[] arr, boolean[] visited, int n) {
+        for (int i = 0; i < n; i++) {
+            if (visited[i]) {
+                System.out.print(arr[i] + " ");
+            }
+        }
         System.out.println();
     }
 }
