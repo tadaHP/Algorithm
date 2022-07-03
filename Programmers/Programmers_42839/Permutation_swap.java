@@ -1,14 +1,14 @@
 package Programmers.Programmers_42839;
 public class Permutation_swap {
-    static void permutation(int[] arr, int depth, int n, int r) {
-        if (depth == r) {
-            print(arr, r);
+    static void permutation(int[] arr, int depth, int size, int length) {
+        if (depth == length) {
+            print(arr, length);
             return;
         }
      
-        for (int i=depth; i<n; i++) {
+        for (int i=depth; i<size; i++) {
             swap(arr, depth, i);
-            permutation(arr, depth + 1, n, r);
+            permutation(arr, depth + 1, size, length);
             swap(arr, depth, i);
         }
     }
