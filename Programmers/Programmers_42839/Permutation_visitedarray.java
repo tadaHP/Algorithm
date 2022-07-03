@@ -1,9 +1,9 @@
 package Programmers.Programmers_42839;
 
 public class Permutation_visitedarray {
-    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int r) {
-        if (depth == r) {
-            print(output, r);
+    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int length) {
+        if (depth == length) {
+            print(output, length);
             return;
         }
      
@@ -11,7 +11,7 @@ public class Permutation_visitedarray {
             if (visited[i] != true) {
                 visited[i] = true;
                 output[depth] = arr[i];
-                perm(arr, output, visited, depth + 1, r);
+                perm(arr, output, visited, depth + 1, length);
                 visited[i] = false;;
             }
         }
