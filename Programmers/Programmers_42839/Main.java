@@ -90,13 +90,16 @@ public class Main {
         for(int i = 2 ; i < size ; i++){
             if(!prime[i]){
                 //prime[i] = false
-                for(int j = i* i ; j < size ; j += i){
-                    prime[j] = true;
+                try {
+                    for(int j = i* i ; j < size ; j += i){
+                        prime[j] = true;
+                    }    
+                } catch (Exception e) {
+                    
                 }
+                
             }
         }
         return prime;
     }
-
-
 }
