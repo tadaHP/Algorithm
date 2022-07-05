@@ -93,7 +93,7 @@ public class Main {
                 try {
                     for(int j = i* i ; j < size ; j += i){
                         prime[j] = true;
-                    }    
+                    }
                 } catch (Exception e) {
                     
                 }
