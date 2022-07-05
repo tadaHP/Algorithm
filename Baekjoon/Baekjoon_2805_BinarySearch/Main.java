@@ -17,8 +17,6 @@ public class Main {
         int meter;
         int treeNum = 0;
         int end;
-        int average=0;
-        int answer = 0;
         StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine());
         
         treeNum = Integer.parseInt(stringTokenizer.nextToken());            
@@ -35,7 +33,6 @@ public class Main {
         Arrays.sort(treeSize);
         end = treeSize[treeSize.length-1];
 
-        // System.out.println("answer is : " + BinarySearch(treeSize, meter, 0, end, end/2));
         bufferedWriter.write(Integer.toString(BinarySearch(treeSize, meter, 0, end, end/2)));
         bufferedWriter.close();
         
@@ -43,22 +40,23 @@ public class Main {
 
     public static int BinarySearch(int[] array, int target, int start, int end, int mid){
         if(start> end){
-            return -1;
+            return mid;
         }
-        int answerSum=0;
-        for(int i : array){        
+        long answerSum=0;
+        for(long i : array){        
             if(i - mid > 0){
                 answerSum += (i - mid);
             }
+            
         }
         
-        if(Integer.compare(answerSum, target)==0){
+        if(Long.compare(answerSum, target)==0){
             return mid;
         }
-        if(Integer.compare(answerSum, target)>0){
-            return BinarySearch(array, target, mid, end, ((mid+end)/2));
+        if(Long.compare(answerSum, target)>0){            
+            return BinarySearch(array, target, mid+1, end, ((mid+1+end)/2));
         }else {
-            return BinarySearch(array, target, start, mid, ((mid+start)/2));
+            return BinarySearch(array, target, start, mid-1, ((mid-1+start)/2));
         }
               
 
