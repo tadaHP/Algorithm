@@ -1,38 +1,30 @@
 package Programmers.Programmers_42862;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         int n = 5;
-        
         int[] lost = {2, 4};
         int[] reserve ={3, 1};
 
-        boolean[] isBorrow = new boolean[n];
-        int answer=n-lost.length;
+        int[] student = new int[n];
+        int answer = n;
 
-        Arrays.sort(reserve);
+        for(int i : lost)
+            student[i-1] = -1;
+        for(int i : reserve)
+            student[i-1] +=1 ;
 
-        for(int i =0; i<lost.length ;i++){
-            for(int j: reserve){
-                if(Integer.compare(lost[i]-1, j)==0 && !isBorrow[lost[i]-2]){ //lost-1 == reserve
-                    answer++;
-                    isBorrow[lost[i]-2] = true;
-                    break;
-                }
-                if(Integer.compare(lost[i], j)==0 && !isBorrow[lost[i]-1]){
-                    answer++;
-                    isBorrow[lost[i]-1] = true;
-                    break;
-                }
-                if(Integer.compare(lost[i]+1, j)==0 && !isBorrow[lost[i]]){ //lost+1 == reserve
-                    answer++;
-                    isBorrow[lost[i]] = true;
-                    break;
-                }
+            
+        for(int i = 0 ; i < student.length ; i++){
+            if(student[i] == -1){
+                if(i>0 && student[i-1]==1)
+                    student[i-1] -= 1;
+                else if(i<n-1 && student[i+1] == 1)
+                    student[i+1] -= 1;
+                else
+                    answer--;
             }
         }
-        System.out.println("answer: " + answer);
+        System.out.println(answer);
     }
 }
