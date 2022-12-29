@@ -1,4 +1,4 @@
-package SketchBook;
+package SandBox;
 
 public class CheckSqrt {
 
