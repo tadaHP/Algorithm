@@ -1,8 +1,6 @@
-package Programmers.Programmers42587;
+package Programmers.Programmers42578;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Main {
     static String[][] clothes1 = {{"yellow_hat", "headgear"}, {"blue_sunglasses", "eyewear"}, {"green_turban", "headgear"}};
