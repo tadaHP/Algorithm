@@ -60,7 +60,6 @@ public class Main {
 
 	private static int dijkstra(int start, int end) {
 		PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
-		boolean[] isVisit = new boolean[cityCount + 1];
 		priorityQueue.add(new Node(start, 0));
 		minDistance[start] = 0;
 
@@ -69,17 +68,14 @@ public class Main {
 			int now = visit.visit;
 			int[] data = graph[now];
 
-			if (!isVisit[now]) {
-				isVisit[now] = true;
-
-				for (int i = 1; i < cityCount + 1; i++) {
-					if (!isVisit[i] && data[i] != 100001 && minDistance[i] > minDistance[now] + data[i]) {
-						minDistance[i] = minDistance[now] + data[i];
-						priorityQueue.add(new Node(i, minDistance[i]));
-					}
+			for (int i = 1; i < cityCount + 1; i++) {
+				if (data[i] != 100001 && minDistance[i] > minDistance[now] + data[i]) {
+					minDistance[i] = minDistance[now] + data[i];
+					priorityQueue.add(new Node(i, minDistance[i]));
 				}
-
 			}
+
+
 		}
 		return minDistance[end];
 	}
